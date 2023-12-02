@@ -6,7 +6,6 @@ const raven = document.querySelector('.raven');
 const questionContainer = document.getElementById('question-container');
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('options-container');
-const submitButton = document.getElementById('submit-answer');
 const endGameContainer = document.getElementById('end-game-container');
 const endGameText = document.getElementById('end-game-text');
 const playAgainButton = document.getElementById('play-again');
@@ -47,7 +46,7 @@ function handleKeyPress(event) {
 }
 
 function movePlayer(direction) {
-  const stepSize = 50;
+  const stepSize = 25;
 
   switch (direction) {
     case 'up':
@@ -71,6 +70,31 @@ function movePlayer(direction) {
 
 function updatePlayerPosition() {
   player.style.transform = `translate(${playerPosition.x}px, ${playerPosition.y}px)`;
+  checkPositionAfterAnswer(); // Check for raven movement after updating player position
+}
+
+function checkPositionAfterAnswer() {
+  const positionsAfterAnswer = [
+    { x: 10 * 50, y: 12 * 50 }, // Start
+    { x: 11 * 50, y: 12 * 50 }, // Q1
+    { x: 14 * 50, y: 12 * 50 }, // Q2
+    { x: 17 * 50, y: 10 * 50 }, // Q3
+    { x: 15 * 50, y: 8 * 50 },  // Q4
+    { x: 16 * 50, y: 6 * 50 },  // Q5
+    { x: 18 * 50, y: 5 * 50 },  // Q6
+    { x: 19 * 50, y: 4 * 50 },  // Q7
+    { x: 21 * 50, y: 4 * 50 },  // Q8
+    { x: 25 * 50, y: 6 * 50 },  // Q9
+    { x: 21 * 50, y: 10 * 50 }, // Q10
+    { x: 18 * 50, y: 6 * 50 },  // Q11
+    { x: 19 * 50, y: 5 * 50 },  // Q12
+  ];
+
+  const targetPosition = positionsAfterAnswer[currentQuestionIndex];
+
+  if (targetPosition && playerPosition.x === targetPosition.x && playerPosition.y === targetPosition.y) {
+    unblockPath();
+  }
 }
 
 function displayQuestion() {
@@ -92,12 +116,14 @@ function checkAnswer(selectedAnswer, correctAnswer) {
   if (Array.isArray(correctAnswer)) {
     if (correctAnswer.includes(selectedAnswer)) {
       unblockPath();
+      moveRavenRandom(); // Move raven to a random spot after correct answer
     } else {
       handleWrongAnswer();
     }
   } else {
     if (selectedAnswer === correctAnswer) {
       unblockPath();
+      moveRavenRandom(); // Move raven to a random spot after correct answer
     } else {
       handleWrongAnswer();
     }
@@ -105,7 +131,7 @@ function checkAnswer(selectedAnswer, correctAnswer) {
 }
 
 function unblockPath() {
-  playerPosition.x += 50;
+  playerPosition.x += 0;
   updatePlayerPosition();
   questionContainer.classList.add('hidden');
   currentQuestionIndex++;
@@ -119,11 +145,25 @@ function unblockPath() {
   }
 }
 
+function moveRavenRandom() {
+  const maxX = window.innerWidth - 50;
+  const maxY = window.innerHeight - 50;
+
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
+
+  raven.style.transform = `translate(${randomX}px, ${randomY}px)`;
+}
+
 function handleWrongAnswer() {
   blockedPaths++;
 
   if (blockedPaths >= 3) {
     endGame(false);
+  } else {
+    setTimeout(() => {
+      displayQuestion();
+    }, 500);
   }
 }
 
@@ -139,7 +179,7 @@ function endGame(success) {
 }
 
 function resetGame() {
-  playerPosition = { x: 50, y: 50 };
+  playerPosition = { x: 100, y: 3000 };
   blockedPaths = 0;
   currentQuestionIndex = 0;
   updatePlayerPosition();
@@ -150,62 +190,62 @@ function resetGame() {
 
 const questions = [
   {
-    text: "What does the ARISE Building stand for?",
-    options: ["The Advance Research in Science/Engineering", "The Advanced Research and Innovation in Smart Environments", "The Arts, Reading, Indigenous, Speaking, and English Studies"],
-    correctAnswer: "The Advanced Research and Innovation in Smart Environments"
-  },
-  {
-    text: "What programs call the Loeb Building home? (select all that apply)",
+    text: "Please move to the Loeb Building. What programs call the Loeb Building home? (Choose One)",
     options: ["Anthropology", "Music", "Public Affairs", "English", "Psychology"],
     correctAnswer: ["Music", "Public Affairs"]
   },
   {
-    text: "Who is Southam Hall named after?",
+    text: "Please move to the ARISE Building. What does the ARISE Building stand for?",
+    options: ["The Advance Research in Science/Engineering", "The Advanced Research and Innovation in Smart Environments", "The Arts, Reading, Indigenous, Speaking, and English Studies"],
+    correctAnswer: "The Advanced Research and Innovation in Smart Environments"
+  },
+  {
+    text: "Please move to Southam Hall. Who is Southam Hall named after?",
     options: ["John D. Southam", "Henry P. Southam", "Harry S. Southam", "George H. Southam"],
     correctAnswer: "Harry S. Southam"
   },
   {
-    text: "How many floors does Dunton Tower have?",
-    options: ["24", "21", "22", "27"],
-    correctAnswer: "22"
-  },
-  {
-    text: "What floor is the quiet study space at MacOdrum Library?",
+    text: "Please move to the MacOdrum Library. What floor is the quiet study space at MacOdrum Library?",
     options: ["4", "5", "3"],
     correctAnswer: "3"
   },
   {
-    text: "Which is older: The Tory Building or the Nideyinan (UC)?",
+    text: "Please move to Dunton Tower. How many floors does Dunton Tower have?",
+    options: ["24", "21", "22", "27"],
+    correctAnswer: "22"
+  },
+  {
+    text: "Please move to UC (Nideyinan) Level 1. Which is older: The Tory Building or the Nideyinan (UC)?",
     options: ["Tory", "Nideyinan"],
     correctAnswer: "Tory"
   },
   {
-    text: "The Architecture Program started at what year?",
+    text: "Please move to Architecture Building. The Architecture Program started at what year?",
     options: ["1974", "1972", "1968"],
     correctAnswer: "1968"
   },
   {
-    text: "The Nicol Building is home to which program?",
+    text: "Please move to the Nicol Building. The Nicol Building is home to which program?",
     options: ["The Azrieli School of Architecture and Urbanism", "The Sprott School of Business", "The Nicol School of Arts and Administration"],
     correctAnswer: "The Sprott School of Business"
   },
   {
-    text: "What is the name of Carleton's Sports team?",
+    text: "Please move to the FieldHouse. What is the name of Carleton's Sports team?",
     options: ["The Gee-Gees", "The Pandas", "The Cardinals", "The Ravens"],
     correctAnswer: "The Ravens"
   },
   {
-    text: "What is the name of the Lecture Theatre at the Minto CASE?",
+    text: "Please move to Minto CASE. What is the name of the Lecture Theatre at the Minto CASE?",
     options: ["Minto Theatre", "Bell Canada Theatre", "Mattamy Theatre"],
     correctAnswer: "Bell Canada Theatre"
   },
   {
-    text: "What are Stormot, Dundas, Glengarry, Lanark, Frontenac, Prescott, Russel, and Renfrew named after?",
+    text: "Please move to the Residence (Teraanga) Commons. What are Stormont, Dundas, Glengarry, Lanark, Frontenac, Prescott, Russel, and Renfrew named after?",
     options: ["Scottish Hats", "Various cities in Scotland", "The counties and areas around Ottawa", "Different British Dudes"],
     correctAnswer: "The counties and areas around Ottawa"
   },
   {
-    text: "What does St. Patrick's Building house? (Select all that Apply)",
+    text: "Please move to Leeds House. What does St. Patrick's Building house? (Choose One)",
     options: ["Carleton University Art Gallery", "Art and Culture", "Linguistics", "Architecture History", "Religion Studies"],
     correctAnswer: ["Carleton University Art Gallery", "Art and Culture", "Religion Studies"]
   }
