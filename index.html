@@ -1,212 +1,30 @@
 <!DOCTYPE html>
-<html lang="ca-en">
-  <head>
-    <!-- Set the page title -->
-    <title>Group Project</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Carleton University Game</title>
+</head>
+<body>
+    <div class="start-screen">
+      <h1>Welcome to the Carleton University Game</h1>
+      <button id="start-game">Start Game</button>
+    </div>
+  <div class="game-container">
+    <img id="player" src="SpriteMain.svg" alt="Player">
+    <img class="raven" src="SpriteChicken.svg" alt="Raven">
+    <div id="question-container" class="hidden">
+      <h2 id="question-text"></h2>
+      <div id="options-container"></div>
+      <button id="submit-answer">Submit Answer</button>
+    </div>
+    <div id="end-game-container" class="hidden">
+      <h2 id="end-game-text"></h2>
+      <button id="play-again">Play Again</button>
+    </div>
+  </div>
 
-    <!-- Set the charset we're using to UTF-8 -->
-    <meta charset="UTF-8" />
-
-    <!-- Set the screens default zoom / scale to 1 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Specifies the document mode for Internet Explorer -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- We are using a CSS Reset file to standardize browser default css -->
-    <link rel="stylesheet" href="./reset.css" />
-
-    <!-- This is where all of our awesome CSS code goes -->
-    <link rel="stylesheet" href="./style.css" />
-
-    <!-- Set the Favicon  -->
-    <link rel="icon" href="./images/favicon/rocket.svg" type="image/svg+xml" />
-  </head>
-  <body>
-    <!--
-
-      ADD YOUR GROUP PROJECT CODE
-
-      YOU MAY REMOVE THE BOILERPLATE CODE BELOW
-
-    -->
-
-
-
-
-
-    <main>
-      <div id=StartPage>
-       <p><h2>The Carleton Quiz!</h2></p>
-        <button id="StartButton">Start the Game!</button> 
-      </div>
-      <div class="Questions">
-
-
-
-
-       <div class="Q1"> 
-      <h3>What does the ARISE Building stand for?</h3>
-       <h4> 
-        <button id="wa">a) The Advance Research in Science/Engineering</button>
-        <button id="ca">b) The Advanced Research and Innovation in Smart Environments</button>
-        <button id="wa">c) The Arts, Reading, Indigenous, Speaking, and English Studies</button>
-      </h4>
-     </div>
-        
-     
-     
-     
-     
-        <div class="Q2">
-          <h3>What programs call the Loeb Building home? (select all all that apply)</h3>
-          <h4> 
-           <button id="wa">a) Anthropology</button>
-           <button id="ca">b) Music</button>
-           <button id="ca">c) Public Affairs</button>
-           <button id="wa">d) English</button>
-           <button id="wa">e) Psychology</button>
-         </h4>
-        </div>
-        
-      
-      
-      
-      
-      <div class="Q3">
-        <h3>Who is Southam Hall named after?</h3>
-        <h4> 
-         <button id="wa">a) John D. Southam</button>
-         <button id="wa">b) Henry P. Southam</button>
-         <button id="ca">c) Harry S. Southam</button>
-         <button id="wa">d) George H. Southam</button>
-       </h4>
-      </div>
-       
-      
-      
-      
-      
-      <div class="Q4A">
-        <h3>A. How many floors does Dunton Tower have?</h3>
-          <h4> 
-           <button id="wa">a) 24</button>
-           <button id="wa">b) 21</button>
-           <button id="ca">c) 22</button>
-           <button id="wa">d) 27</button>
-         </h4>
-        </div>
-       
-        <div class="Q4B">
-          <h3>B. What floor is the quiet study space at MacOdrum Library?</h3>
-            <h4> 
-             <button id="wa">a) 4</button>
-             <button id="wa">b) 5</button>
-             <button id="ca">c) 3</button>
-           </h4>
-          </div>
-      
-      
-      <!-- #5 is a conjunction crossroad-->
-      <div class="Q5">
-        <h3>Which is older: The Tory Building or the Nideyinan (UC)?</h3>
-          <h4> 
-           <button id="ca">a) Tory</button>
-           <button id="wa">b) Nideyinan</button>
-         </h4>
-        </div>
-        
-      
-      
-      
-      
-      <div class="Q6A">
-        <h3>A. The Architecture Program started in what year?</h3>
-          <h4> 
-           <button id="wa">a) 1974</button>
-           <button id="wa">b) 1972</button> 
-           <button id="ca">c) 1968</button>
-         </h4>
-        </div>
-        
-        <div class="Q6B">
-          <h3>B. The Nicol Building is home to which program?</h3>
-            <h4> 
-             <button id="wa">a) The Azrieli School of Architecture and Urbanism</button>
-             <button id="ca">b) The Sprott School of Business</button>
-             <button id="wa">c) The Nicol School of Arts and Administration</button>
-           </h4>
-          </div>
-          
-      
-      
-      <!-- #7 is a conjunction crossroad-->
-      <div class="Q7">
-        <h3>What is the name of Carleton's Sports team?</h3>
-        <h4> 
-         <button id="wa">a) The Gee-Gees</button>
-         <button id="wa">b) The Pandas</button> 
-         <button id="wa">c) The Cardinals</button> 
-         <button id="ca">d) The Ravens</button>
-       </h4>
-      </div>
-       
-      
-      
-      
-      
-      <div class="Q8">
-        <h3>What is the name of the Lecture Theatre at the Minto CASE?</h3>
-        <h4> 
-         <button id="wa">a) Minto Theatre</button>
-         <button id="ca">b) Bell Canada Theatre</button>
-         <button id="wa">c) Mattamy Theatre</button>
-       </h4>
-      </div>
-       
-      
-      
-      
-      
-      <div class="Q9">
-        <h3>What are Stormot, Dundas, Glengarry, Lanark, Frontenac, Prescott, Russel, and Renfrew named after?</h3>
-          <h4>           
-           <button id="wa">a) Scottish Hats</button>
-           <button id="wa">b) Various cities in Scotland</button>
-           <button id="ca">c) The counties and areas around Ottawa</button>
-           <button id="wa">d) Different British Dudes</button>
-         </h4>
-        </div>
-        
-      
-      
-      
-      
-      <div class="Q10">
-        <h3>What does the St. Patrick's Building house? (Select all that Apply)</h3>
-          <h4> 
-           <button id="ca">a) Carleton University Art Gallery</button>
-           <button id="ca">b) Art and Culture</button>
-           <button id="wa">c) Linguistics</button>
-           <button id="ca">d) Architecture History</button>
-           <button id="wa">e) Religion Studies</button>
-         </h4>
-        </div>
-     
-     
-     
-     
-      </div>
-    </main>
-
-
-
-
-
-
-
-
-    <!-- This is where we add our awesome JavaScript code -->
-    <script src="./script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>

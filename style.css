@@ -1,56 +1,115 @@
-/*
-  CSS File
-*/
-
-/*
- VARIABLES
-*/
-:root {
-  /* Core colours */
-  /* https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557 */
-  --colour-amaranth: #e63946;
-  --colour-peppermint: #f1faee;
-  --colour-aquaisland: #a8dadc;
-  --colour-wedgewood: #457b9d;
-  --colour-cello: #1d3557;
-
-  /* Header configuration */
-  --header-heading-colour: var(--colour-peppermint);
-
-  /* Body configuration */
-  --body-default-colour: var(--colour-peppermint);
-  --body-background-colour: var(--colour-cello);
-}
-
-/*
-  PAGE / BODY
-*/
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--body-default-colour);
-  background-color: var(--body-background-colour);
-}
-
-main {
-  background-image: url(CU_Temporary-Tunnel-Closure-Map.png);
-  min-height: 75rem;
-  max-height: 75rem;
-  min-width: auto;
-  max-width: 60rem;
-  
-}
-
-/*
-  Screen reader text utility class
-*/
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+  margin: 0;
   padding: 0;
-  margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  font-family: 'SF Compact Rounded', sans-serif;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #b10f0f;
+}
+
+.start-screen h1 {
+  color: #fff;
+}
+
+.start-screen button {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.start-screen button:hover {
+  background-color: #27ae60;
+}
+
+.game-container {
+  position: relative;
+  width: 100vw;
+  height: 200vh; /* Adjust the height as needed for the full image to be visible */
+  overflow: scroll; /* Enable scrolling */
+  background-image: url('CU_Temporary-Tunnel-Closure-Map.png');
+  background-size: cover;
+  background-attachment: fixed; /* Fixed background */
+}
+
+#player {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  /* Placeholder styles, add your own player image or adjust styles */
+  border-radius: 50%;
+}
+
+.raven {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  /* Placeholder styles, add your own raven image or adjust styles */
+}
+
+#question-container,
+#end-game-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#question-container h2,
+#end-game-container h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#options-container button {
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#options-container button:hover {
+  background-color: #2980b9;
+}
+
+#submit-answer,
+#play-again {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#submit-answer:hover,
+#play-again:hover {
+  background-color: #27ae60;
+}
+
+.hidden {
+  display: none;
 }
