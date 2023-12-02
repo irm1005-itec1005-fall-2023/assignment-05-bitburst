@@ -33,7 +33,11 @@ body {
 
 main {
   min-height: 100vh;
-
+background-image: url(CU_Temporary-Tunnel-Closure-Map.png);
+  min-height: 75rem;
+  max-height: 75rem;
+  min-width: auto;
+  max-width: 60rem;
   display: flex;
   justify-content: center;
   align-items: center;
