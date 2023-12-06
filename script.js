@@ -24,20 +24,25 @@ function startGame() {
   window.addEventListener('keydown', handleKeyPress);
 }
 
+
 function handleKeyPress(event) {
   const keyPressed = event.key.toLowerCase();
 
   switch (keyPressed) {
     case 'w':
+    case 'arrowup':
       movePlayer('up');
       break;
     case 'a':
+    case 'arrowleft':
       movePlayer('left');
       break;
     case 's':
+    case 'arrowdown':
       movePlayer('down');
       break;
     case 'd':
+    case 'arrowright':
       movePlayer('right');
       break;
     default:
