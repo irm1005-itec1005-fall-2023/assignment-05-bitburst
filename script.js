@@ -171,6 +171,19 @@ function handleWrongAnswer() {
     }, 500);
   }
 }
+function handleWrongAnswer() {
+  blockedPaths++;
+
+  alert('Wrong answer!');
+
+  if (blockedPaths >= 3) {
+    endGame(false);
+  } else {
+    setTimeout(() => {
+      displayQuestion();
+    }, 500);
+  }
+}
 
 function endGame(success) {
   if (success) {
