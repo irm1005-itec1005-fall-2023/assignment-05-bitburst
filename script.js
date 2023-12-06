@@ -171,17 +171,25 @@ function handleWrongAnswer() {
     }, 500);
   }
 }
+
+const wrongAnswerOverlay = document.createElement('div');
+wrongAnswerOverlay.classList.add('wrong-answer-overlay');
+document.body.appendChild(wrongAnswerOverlay);
+
 function handleWrongAnswer() {
-  blockedPaths++;
 
-  alert('Wrong answer!');
+  if (blockedPaths < 2) {
+    blockedPaths++;
 
-  if (blockedPaths >= 3) {
-    endGame(false);
-  } else {
+    wrongAnswerOverlay.style.display = 'block';
+
     setTimeout(() => {
+      wrongAnswerOverlay.style.display = 'none';
       displayQuestion();
-    }, 500);
+    }, 500);  
+
+  } else {
+    endGame(false);
   }
 }
 
