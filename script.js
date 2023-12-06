@@ -45,6 +45,11 @@ function handleKeyPress(event) {
   }
 }
 
+function preventScroll(event) {
+  event.preventDefault();
+}window.addEventListener('scroll', preventScroll);
+
+
 function movePlayer(direction) {
   const stepSize = 25;
 
