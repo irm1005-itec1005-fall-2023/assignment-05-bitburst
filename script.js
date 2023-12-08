@@ -236,7 +236,7 @@ const questions = [
     correctAnswer: "Harry S. Southam"
   },
   {
-    text: "Please move to the MacOdrum Library. What floor is the quiet study space at MacOdrum Library?",
+    text: "Please move to the MacOdrum Library. What floors are the quiet study spaces at MacOdrum Library located?",
     options: ["4", "5", "3"],
     correctAnswer: ["3", "5"]
   },

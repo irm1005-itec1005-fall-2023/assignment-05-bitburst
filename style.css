@@ -67,12 +67,14 @@ body {
 #question-container,
 #options-container {
   position: fixed;
+  margin-top: 2rem;
   left: 20px;
   text-align: left;
   background-color: #ff0000;
   padding: 20px;
-  border-radius: 10px;
-
+  border-radius: 25px;
+  box-shadow: 0px 0px 1rem 0px #a3a3a3;
+  border-top: #ff0000;
 }
 
 #question-container h2 {
@@ -94,7 +96,7 @@ body {
   display: grid;
   align-items: center;
   width: 19.39rem;
-  font-style: italic;
+  font-style: bold;
 }
 
 #options-container button:hover {
