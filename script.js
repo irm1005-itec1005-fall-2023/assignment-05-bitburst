@@ -238,7 +238,7 @@ const questions = [
   {
     text: "Please move to the MacOdrum Library. What floor is the quiet study space at MacOdrum Library?",
     options: ["4", "5", "3"],
-    correctAnswer: "3"
+    correctAnswer: ["3", "5"]
   },
   {
     text: "Please move to Dunton Tower. How many floors does Dunton Tower have?",
